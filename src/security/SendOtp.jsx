@@ -11,12 +11,11 @@ const SendOtp = () => {
         const formdata = new FormData(e.target);
         const data = Object.fromEntries(formdata);
         console.log(data)
-
         myaxios.post('send-otp',data)
         .then((response)=>{
             if(response.data.status == 'success'){
                 console.log(response.data)
-                localStorage.setItem('email',data.email);
+                localStorage.setItem('email',response.data.email);
                 nevigate('/varify-otp');
             }else{
                 console.error(response.data);

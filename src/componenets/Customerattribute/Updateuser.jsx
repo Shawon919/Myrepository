@@ -11,7 +11,8 @@ const Updateuser = ({data,loaddata}) => {
 
 
     const updateform = (e) =>{
-        const formdata = new formdata(e.tr)
+        e.preventDefault();
+        const formdata = new formdata(e.target)
         myaxios.post("/update-customer")
         .then((response)=>{
             if (response.data.status === 1){
